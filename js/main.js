@@ -2,6 +2,23 @@
 const sketchboard = document.querySelector('#sketchboard') ;
 const gridSize = document.querySelector('#gridSize') ;
 
+let drawColor = '#000';
+let randomColor = false;
+document.querySelector('#selectColor').addEventListener('change',(e)=>{
+    randomColor = false;
+    drawColor = e.target.value;
+})
+document.querySelector('#randomColor').addEventListener('click',()=>{
+    randomColor = true ;
+})
+document.querySelector('#eraser').addEventListener('click',()=>{
+    randomColor = false;
+    drawColor ='#FFF'
+})
+document.querySelector('#clear').addEventListener('click',gridCreation)
+
+gridCreation();
+gridSize.addEventListener('input',gridCreation)
 
 function gridCreation () {
     const size = gridSize.value;
@@ -18,11 +35,30 @@ function gridCreation () {
 
 
 function draw(e){
-    e.target.style.backgroundColor = '#000000'
+    if(randomColor === true){
+        drawColor = getRandomHexColor();
+    }
+    e.target.style.backgroundColor = drawColor;
 }
 
-gridCreation();
-gridSize.addEventListener('input',gridCreation)
+
+function getRandomHexColor() {
+
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+  
+    const hexColor = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+  
+    return hexColor;
+  }
+
+  
+  
+  
+  
+  
+  
 
 
 
