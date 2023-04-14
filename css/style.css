@@ -1,4 +1,6 @@
-
+:root{
+    --size:16;
+}
 /* header layout */
 h1,h2{
     text-align: center;
@@ -21,8 +23,8 @@ main{
 }
 #sketchboard{
     display: grid;
-    grid-template-columns: repeat(16,1fr);
-    grid-template-rows: repeat(16,1fr);
+    grid-template-columns: repeat(var(--size),1fr);
+    grid-template-rows: repeat(var(--size),1fr);
     width: 60vw;
     height:60vw;
     margin: 3vw;
